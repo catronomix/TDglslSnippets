@@ -1,0 +1,128 @@
+//GLSL Snippets for Touchdesigner-specific functions and uniforms
+//put this in your glsl snippets json file inside VSCode
+//(File>Preferences>User Snippets>glsl.json
+
+//use TDglslSnippets to get a reference list of all snippets while coding
+
+{ //only include this bracket when replacing the whole file!
+
+	"TDglslSnippets": {
+		"prefix": "TDglslSnippets",
+		"body": [
+		  "${1|atomic_counter_layout,atomicCounterIncrement,layout,TD_pixel,TD_vertex,TDDither,TDHSVToRGB,TDNoise,TDOutputSwizzle,TDRGBToHSV,texture,uTDCurrentDepth,uTDinfos,uTDPass|}"
+		],
+		"description": "TDglslSnippets"
+	  },
+
+	"vec4 texture": {
+		"prefix": "texture(",
+		"body": [
+		  "texture(${1|sTD2DInputs,sTD3DInputs,sTDCubeInputs,sTD2DArrayInputs|}[${2:0}], ${3|vUV.st,vUV.stp|});"
+		],
+		"description": "vec4 texture"
+	  },
+
+	  "TD_pixel": {
+		"prefix": "TD_pixel",
+		"body": [
+		  "TD_${1|TD_NUM_2D_INPUTS,TD_NUM_3D_INPUTS,TD_NUM_2D_ARRAY_INPUTS,TD_NUM_CUBE_INPUTS,TD_NUM_COLOR_BUFFERS|}"
+		],
+		"description": "TD_pixel"
+	  },
+
+	  "uTDinfos(vec4)": {
+		"prefix": "uTDinfos",
+		"body": [
+		  "uTD${1|2DInfos,3DInfos,2DArrayInfos,CubeInfos|}[${2:0}].${3|res,depth|}"
+		],
+		"description": "uTDinfos (vec4)"
+	  },
+
+	  "int uTDCurrentDepth": {
+		"prefix": "uTDCurrentDepth",
+		"body": [
+		  "uTDCurrentDepth"
+		],
+		"description": "int uTDCurrentDepth"
+	  },
+
+	  "int uTDPass": {
+		"prefix": "uTDPass",
+		"body": [
+		  "uTDPass"
+		],
+		"description": "int uTDPass"
+	  },
+
+	  "TD_vertex": {
+		"prefix": "TD_vertex",
+		"body": [
+		  "TD_${1|TD_NUM_LIGHTS,TD_NUM_ENV_LIGHTS,TD_NUM_CAMERAS,TD_NUM_COLOR_BUFFERS,TD_PICKING_ACTIVE|}"
+		],
+		"description": "TD_vertex"
+	  },
+
+	  "atomic counter layout": {
+		"prefix": "atomic_counter_layout",
+		"body": [
+		  "layout(binding = {1:0}) uniform atomic_uint {2:ac};"
+		],
+		"description": "atomic counter layout"
+	  },
+
+	  "uint atomicCounterIncrement": {
+		"prefix": "atomicCounterIncrement(",
+		"body": [
+		  "atomicCounterIncrement({$1})"
+		],
+		"description": "uint atomicCounterIncrement"
+	  },
+
+	  "vec4 TDOutputSwizzle": {
+		"prefix": "TDOutputSwizzle(",
+		"body": [
+		  "TDOutputSwizzle(${1:vec4 color})"
+		],
+		"description": "vec4 TDOutputSwizzle"
+	  },
+
+	  "float TDNoise": {
+		"prefix": "TDNoise",
+		"body": [
+		  "TD${1|PerlinNoise,SimplexNoise|}(${2|vec2,vec3,vec4|}($3))"
+		],
+		"description": "float TDNoise"
+	  },
+
+	  "vec3 TDHSVToRGB": {
+		"prefix": "TDHSVToRGB(",
+		"body": [
+		  "TDHSVToRGB($1)"
+		],
+		"description": "vec3 TDHSVToRGB"
+	  },
+
+	  "vec3 TDRGBToHSV": {
+		"prefix": "TDRGBToHSV(",
+		"body": [
+		  "TDRGBToHSV($1)"
+		],
+		"description": "vec3 TDRGBToHSV"
+	  },
+
+	  "vec4 TDDither": {
+		"prefix": "TDDither(",
+		"body": [
+		  "TDDither($1)"
+		],
+		"description": "vec4 TDDither"
+	  },
+
+	  "layout": {
+		"prefix": "layout(",
+		"body": [
+		  "layout(location = ${1|0,1,2,3,4|}) out vec4 ${2:'name'};"
+		],
+		"description": "layout"
+	  }
+} //only include this bracket when overwriting the whole file!
